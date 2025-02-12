@@ -1,10 +1,14 @@
 @import url(https://db.onlinewebfonts.com/c/1a5c2d8bb4e28d99a6efcbb9a5b378f?family=JejuMyeongo);
 
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Road+Rage&display=swa');
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Road+Rage&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'JejuMyeongjo' sans-serif;
+  font-family: 'Roboto' sans-serif;
 }
 
 body{
@@ -20,4 +24,115 @@ body{
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 700px;
+  width: 90%;
+  min-height: 858px;
+  height: auto;
+  background: #041E23;
+  border: 1px solid #0E464F;
+  border-radius: 40px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0 auto;
+  color: white;
+}
+
+.heading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap:5px;
+}
+
+.heading-text{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+  font-family: 'JejuMyeongjo', Courier, monospace;
+}
+
+.heading-text h1{
+  font-size: 2rem;
+  font-weight: lighter;
+}
+
+.heading-text h1:focus, .heading-text h1:focus-visible {
+  outline: none; /* Headings generally don't need outlines */
+}
+
+.heading-text p{
+  font-size: 1.2rem;
+}
+
+
+.road-rage{
+  font-family: "Road Rage", serif;
+  font-size: 4rem;
+  font-weight: lighter;
+}
+
+.btn-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn{
+  padding: 12px 24px;
+  margin-inline: 4px;
+  max-width: 240px;
+  width: 100%;
+  height: 48px;
+  color: white;
+  border: 1px solid #24A0B5;
+  border-radius: 8px;
+}
+
+.btn:focus, .btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow: 0 0 5px rgba(36, 160, 181, 0.8);
+}
+
+.cancel-btn{
+  background-color: transparent;
+  color: #24A0B5
+}
+
+.next-btn{
+  background-color: #24A0B5;
+}
+
+.booking:focus-visible, .btn:focus-visible, select:focus-visible {
+  transition: outline 0.2s ease-in-out;
+}
+
+@media (max-width: 770px) {
+    .container{
+        width: 95%;
+    }
+
+  .heading-text{
+    padding-inline: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+    }
+
+    .heading-text h1{
+        font-size: 1.5rem;
+    }
+
+    .heading-text p{
+        font-size: 0.8rem;
+    }
 }
