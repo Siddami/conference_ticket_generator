@@ -1,0 +1,23 @@
+@import url(https://db.onlinewebfonts.com/c/1a5c2d8bb4e28d99a6efcbb9a5b378f?family=JejuMyeongo);
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'JejuMyeongjo' sans-serif;
+}
+
+body{
+  position: relative;
+  background: #02191D;
+  border-radius: 0px;
+  background: radial-gradient(52.52% 32.71% at 50% 97.66%, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%), #02191D;
+  height: 100vh;
+  width: 100%;
+}
+
+.Layout{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
