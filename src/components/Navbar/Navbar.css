@@ -4,6 +4,7 @@
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 4rem;
+  font-family: 'JejuMyeongjo', Courier, monospace;
 }
 
 .Nav-container {
@@ -24,7 +25,6 @@
   display: flex;
   gap:1rem;
   text-decoration: none;
-  font-size:1.3rem;
 }
 
 .nav-links a{
