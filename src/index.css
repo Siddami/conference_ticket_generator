@@ -16,7 +16,7 @@ body{
   background: #02191D;
   border-radius: 0px;
   background: radial-gradient(52.52% 32.71% at 50% 97.66%, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%), #02191D;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -43,6 +43,7 @@ body{
   flex-grow: 0;
   margin: 0 auto;
   color: white;
+  padding: 2rem;
 }
 
 .heading{
@@ -135,4 +136,12 @@ body{
     .heading-text p{
         font-size: 0.8rem;
     }
+
+}
+
+@media (max-width: 600px) {
+  .btn-container{
+    flex-direction: column;
+    gap: 2rem;
+  }
 }
