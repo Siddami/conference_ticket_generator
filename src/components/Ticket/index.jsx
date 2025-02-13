@@ -1,66 +1,115 @@
 import React from 'react';
 import './Ticket.css';
 import { getFormData, getTicketSelection } from '../../utils/FormUtils';
-import TicketBackground from '../reuseables/TicketBackground'
-import BarCode from '../reuseables/BarCode'
+import TicketBackground from '../reuseables/TicketBackground';
+import BarCode from '../reuseables/BarCode';
+import ButtonGroup from '../reuseables/ButtonGroup';
+import Heading from '../reuseables/Heading';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 const Ticket = () => {
-  const formData = getFormData();
-    console.log(formData)
+    const navigate = useNavigate();
+    const formData = getFormData();
+    const ticketData = getTicketSelection();
 
-    const ticketData = getTicketSelection()
-    console.log(ticketData)
+    const handleNewBooking = () => {
+        toast.success('Redirecting to booking page...');
+        navigate('/');
+    };
 
-  return (
-    <div className='container'>
-        <div className='ticket-intro'>
-            <h1>Your Ticket is Booked</h1>
-            <p>Check your email for a copy or you can <strong>download</strong></p>
-        </div>
-        <TicketBackground className="relative" />
-        <div className='content'>
-            <div className='ticket-info'>
-                        <div className='event-detail'>
-                            <h1>Techember Fest ”25</h1>
-                            <p>📍 04 Rumens road, Ikoyi, Lagos</p>
-                            <p>📅 March 15, 2025 | 7:00 PM</p>
+    const handleDownload = () => {
+        console.log('Generating ticket...');
+        const ticketElement = document.querySelector('.ticket-container');
+        if (ticketElement) {
+            html2canvas(ticketElement, { scale: 2 }).then((canvas) => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                pdf.addImage(imgData, 'PNG', 10, 10, 190, 0);
+                pdf.save('ticket.pdf');
+            });
+        }
+    };
+
+    return (
+        <main className="container">
+            <Heading 
+                title="Ready"
+                subtitle="Step 3/3"
+                icon="/icons/step3.svg"
+            />
+
+            <header className="ticket-intro">
+                <h1>Your Ticket is Booked</h1>
+                <p>Check your email for a copy or you can <strong>download</strong></p>
+            </header>
+
+            <TicketBackground className="relative" aria-hidden="true" />
+
+            <section className="content">
+                <article className="ticket-info">
+                    <div>
+                        <header className="event-detail">
+                            <h2>Techember Fest ’25</h2>
+                            <p role="text">📍 04 Rumens Road, Ikoyi, Lagos</p>
+                            <p role="text">📅 March 15, 2025 | 7:00 PM</p>
+                        </header>
+
+                        {formData.imageUrl && (
+                            <figure className="avatar">
+                                <img 
+                                    src={formData.imageUrl} 
+                                    alt={`Profile picture of ${formData.name}`} 
+                                />
+                            </figure>
+                        )}
+                    </div>
+
+                    <section className="ticket-details">
+                        <div className="label">
+                            <label htmlFor="name">Name</label>
+                            <div className="value" id="name"><strong>{formData.name}</strong></div>
                         </div>
-                        <div className='avatar'>
-                            <img src={formData.imageUrl} alt={formData.name} />
+
+                        <div className="label">
+                            <label htmlFor="email">Email</label>
+                            <div className="value" id="email"><strong>{formData.email}</strong></div>
                         </div>
-                        <div className="ticket-details">
-                            <div className="label">
-                                <label htmlFor="">Enter your name</label>
-                                <div className="value"><strong>{formData.name}</strong></div>
-                            </div>
-                            
 
-                            <div className="label">
-                                <label htmlFor="">Enter your email</label>
-                                <div className="value"><strong>{formData.email}</strong></div>
-                            </div>
+                        <div className="label">
+                            <label htmlFor="ticket-type">Ticket Type</label>
+                            <div className="value" id="ticket-type">{ticketData.type}</div>
+                        </div>
 
-                            <div className="label">
-                                <label htmlFor="">Ticket Type:</label>
-                                <div className="value">{ticketData.type}</div>
-                            </div>
+                        <div className="label">
+                            <label htmlFor="ticket-quantity">Ticket For</label>
+                            <div className="value" id="ticket-quantity">{ticketData.quantity}</div>
+                        </div>
 
-                            <div className="label">
-                                <label htmlFor="">Ticket For:</label>
-                                <div className="value">{ticketData.quantity}</div>
-                            </div>
+                        {formData.request && (
                             <div className="label full">
-                                <label htmlFor="">Special request?</label>
-                                <div className="value full">{formData.request}</div>    
+                                <label htmlFor="special-request">Special Request</label>
+                                <div className="value full" id="special-request">{formData.request}</div>
                             </div>
-                           
-                        </div>
-            </div>
-            <BarCode className='barcode'/>
-        </div>
+                        )}
+                    </section>
+                </article>
 
-    </div>
-  )
-}
+                <BarCode className="barcode" aria-hidden="true" />
+            </section>
 
-export default  Ticket;
+            <footer className="full-width">
+                <ButtonGroup 
+                    btnOneText="Book another Ticket"
+                    btnTwoText="Download Ticket"
+                    onCancel={handleNewBooking}
+                    onNext={handleDownload}
+                />
+            </footer>
+        </main>
+    );
+};
+
+export default Ticket;
