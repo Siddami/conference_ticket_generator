@@ -2,32 +2,44 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     gap: clamp(1rem, 2vw, 1rem);
     z-index: 10;
     position: relative;
     padding: 0 1rem;
 }
 
-.relative {
+.bg-container{
     position: relative;
     height: auto;
-    max-width: 450px;
-    width: min(100%, 450px);
+    width: 500px;
+    width: min(100%, 500px);
     margin: 0 auto;
+}
+
+.relative{
+    width: 100%;
+}
+
+.barcode-container{
+    position: absolute;
+    bottom: 140px;
 }
 
 .content {
     z-index: 20;
-    margin: clamp(16.5rem, 8vw, 15rem) auto;
+    margin: clamp(14.6rem, 8vw, 15rem) auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: absolute;
-    max-width: 400px;
+    max-width: 260px;
     width: 100%;
     left: 50%;
     transform: translateX(-50%);
-   
+    gap: 1rem;
 }
+
 
 .ticket-info {
     border: 1px solid #24A0B5;
@@ -35,39 +47,36 @@
     width: 100%;
     border-radius: 14px;
     display: flex;
-    height: 600px;
+    max-height: 600px;
+    height: auto;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     backdrop-filter: blur(10px);
     background: rgba(3, 30, 33, 0.1);
 }
 
-.barcode {
-    margin: 0 auto;
-    margin-top: clamp(7rem, 10vw, 6rem);
-    width: 90%;
-}
 
 .event-detail {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-size: 0.625rem;
     flex: 0 1 auto;
     padding: 0 clamp(0.5rem, 2vw, 1rem);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
 .event-detail h2{
-    font-size: 2.3rem;
+    font-size: 1.3rem;
     line-height: 0.9;
 }
 
 .avatar {
-    width: clamp(130px, 15vw, 130px);
-    height: 130px;
+    width: 140px;
+    height: 140px;
     border: 2px solid rgba(36, 160, 181, 0.5);
     border-radius: 12px;
     margin: 0 auto;
@@ -82,8 +91,8 @@
 .ticket-details {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.3rem;
-    width: 95%;
+    gap: 0.5rem;
+    width: 100%;
     background: #08343C;
     color: white;
     text-align: left;
@@ -114,7 +123,7 @@
 }
 
 .ticket-details div {
-    padding: clamp(1px, 1vw, 1px) 0;
+    padding: clamp(0.7px, 1vw, 1px) 0;
     position: relative;
 }
 
@@ -130,109 +139,65 @@
 
 
 
-/* Media Queries */
 @media (max-width: 900px) {
     .content {
         margin: clamp(18rem, 8vw, 15rem) auto;
         width: calc(100% - 4rem);
     }
+}
 
-    .barcode {
-        margin-top: clamp(8rem, 10vw, 8rem);
+
+@media (max-width: 600px) {
+    .content {
+        margin-top: 19rem;
+        width: calc(100% - 4rem);
+        gap: 2rem;
+    }
+
+    .barcode-container{
+        position: absolute;
+        bottom: 210px;
+    }
+
+    .ticket-info{
+        justify-content: center;
+        height: auto;
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 414px){
     .content {
-        margin: clamp(20rem, 8vw, 15rem) auto;
-    }
-
-    .barcode {
-        margin-top: clamp(8rem, 10vw, 9rem);
-    }
-}
-
-@media (max-width: 480px) {
-    .content {
-        margin: clamp(18rem, 8vw, 15rem) auto;
+        margin-top: 22rem;
         width: calc(100% - 6rem);
-        gap: 1rem;
+        gap: 2rem;
+    }
+
+    .barcode-container{
+        bottom: 220px;
     }
 
     .event-detail h2 {
-        font-size: clamp(1.3rem, 2vw, 1.2rem);
+        font-size: clamp(1rem, 2vw, 1.2rem);
     }
 
     .event-detail p {
-        font-size: clamp(0.8rem, 1.8vw, 1rem);
-    }
-
-    .ticket-info {
-        width: 100%;
-        height: auto;
-        justify-content: center;
-        gap: 5rem;
-    }
-
-    .avatar {
-        width: clamp(90px, 18vw, 120px);
-    }
-
-    .ticket-details {
-        width: 100%;
-        height: auto;
-        padding: 0.5rem;
-    }
-
-    .barcode {
-        margin-top: clamp(3rem, 10vw, 6rem);
-        width: 80%;
+        font-size: clamp(0.5rem, 1.8vw, 0.8rem);
     }
 }
 
-@media (max-width: 420px) {
+@media(max-width: 350px){
     .content {
         margin-top: 22rem;
-        width: calc(100% - 7rem);
-        gap: 0.9rem;
+        width: calc(100% - 6rem);
+        gap: 2rem;
     }
 
-    .ticket-info {
-        padding: 0.5rem;
-        gap: 0.5rem;
-    }
-
-    .event-detail {
-        font-size: clamp(0.85rem, 2vw, 1rem);
-    }
-
-    .barcode {
-        margin-top: clamp(4.5rem, 8vw, 5rem);
-    }
-}
-
-@media (max-width: 360px) {
-    .content {
-        margin-top: 20rem;
-    }
-    
-    .barcode{
-        margin-top: clamp(1rem,2vw, 2rem);
-        width: 200px;
-    }
-}
-
-@media (max-width: 345px){
-    .content{
-        margin-top: 20rem;
-    }
-
-    .avatar{
-        height: 70px;
+    .barcode-container{
+        bottom: 250px;
     }
 
     .barcode{
-        margin-top: clamp(1rem, 8vw, 1rem);
-        width: 150px;
+        width: 90%;
+        margin: 0 auto;
     }
 }
