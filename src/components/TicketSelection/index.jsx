@@ -3,10 +3,12 @@ import './TicketSelection.css';
 import ButtonGroup from '../reuseables/ButtonGroup';
 import Heading from '../reuseables/Heading';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const TicketSelection = ({ onNext, onCancel }) => {
     const [ticketType, setTicketType] = useState("");
     const [quantity, setQuantity] = useState(1);
+    const navigate = useNavigate();
 
     const handleCancel = () => {
         // Reset the selection
@@ -52,6 +54,8 @@ const TicketSelection = ({ onNext, onCancel }) => {
         if (onNext) {
             onNext(ticketData);
         }
+        
+        navigate('/form');
     };
 
     const handleQuantityChange = (e) => {
@@ -139,7 +143,9 @@ const TicketSelection = ({ onNext, onCancel }) => {
                 <ButtonGroup 
                     onCancel={handleCancel} 
                     onNext={handleNext} 
-                    disabled={!ticketType} 
+                    disabled={!ticketType}
+                    btnOneText="Cancel"
+                    btnTwoText="Next" 
                 />
             </div>
         </div>
