@@ -1,9 +1,42 @@
-# React + Vite
+# Conference Ticket Generator 
+React-based application for generating conference tickets with a cyberpunk theme. Features multi-step form, persistent storage, and responsive design.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+- Multi-step ticket booking
+- Form validation & data persistence
+- Responsive design
+- Accessible UI
 
-Currently, two official plugins are available:
+## Tech Stack
+- React.js
+- React Router
+- IndexedDB
+- Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# conference_ticket_generator
+## Structure
+```
+src/
+├── components/
+├── pages/
+├── utils/
+└── hooks/
+```
+
+## Setup
+```bash
+npm install
+npm run dev
+```
+
+## Requirements
+- Node.js v14+
+- npm/yarn
+
+## Live Demo
+[Project Link](https://conference-ticket-generator-lilac.vercel.app/)
+
+## Author
+Abdulkareem Yetunde Siddiqat
+
+## Credits
+HNG Internship
