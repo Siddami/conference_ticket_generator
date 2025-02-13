@@ -43,3 +43,8 @@ export const getFormData = () => {
     const data = localStorage.getItem('conferenceFormData');
     return data ? JSON.parse(data) : null;
 };
+
+export const getTicketSelection = () => {
+    const data = localStorage.getItem('ticketSelection');
+    return data ? JSON.parse(data) : null;
+};
