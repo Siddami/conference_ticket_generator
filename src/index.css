@@ -103,6 +103,7 @@ body{
   outline: 2px solid #ffffff;
   outline-offset: 3px;
   box-shadow: 0 0 5px rgba(36, 160, 181, 0.8);
+  border: 1px solid #24A0B5;
 }
 
 .cancel-btn{
@@ -120,6 +121,10 @@ body{
 
 .full-wdth{
   width: 100%;
+}
+
+.wninety{
+  width: 70%;
 }
 
 @media (max-width: 770px) {
