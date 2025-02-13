@@ -100,7 +100,7 @@ const useConferenceForm = () => {
             return;
         }
 
-        navigate('/confirmation', { state: { formData } });
+        navigate('/ticket', { state: { formData } });
     };
 
     return {
