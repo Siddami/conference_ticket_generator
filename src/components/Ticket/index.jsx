@@ -43,11 +43,11 @@ const Ticket = () => {
 
             <header className="ticket-intro">
                 <h1>Your Ticket is Booked</h1>
-                <p>Check your email for a copy or you can <strong>download</strong></p>
+                <p>You can download or Check your email for a copy</p>
             </header>
-
-            <TicketBackground className="relative" aria-hidden="true" />
-
+            <div className='bg-container'>
+                <TicketBackground className="relative" aria-hidden="true" />
+            </div>
             <section className="content">
                 <article className="ticket-info">
                     <div>
@@ -66,7 +66,6 @@ const Ticket = () => {
                             </figure>
                         )}
                     </div>
-
                     <section className="ticket-details">
                         <div className="label">
                             <label htmlFor="name">Name</label>
@@ -96,16 +95,17 @@ const Ticket = () => {
                         )}
                     </section>
                 </article>
-
-                <BarCode className="barcode" aria-hidden="true" />
             </section>
-
-            <footer className="full-width">
+             <div className='barcode-container'>
+                    <BarCode className="barcode" aria-hidden="true" />
+            </div>
+            <footer className="wninety">
                 <ButtonGroup 
                     btnOneText="Book another Ticket"
                     btnTwoText="Download Ticket"
                     onCancel={handleNewBooking}
                     onNext={handleDownload}
+                    className='full-wdth'
                 />
             </footer>
         </main>
