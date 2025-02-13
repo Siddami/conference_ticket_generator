@@ -5,6 +5,7 @@ import { Layout } from "./components/Layout";
 import { Toaster } from "react-hot-toast";
 import TicketSelection from './components/TicketSelection';
 import ConferenceForm from "./components/ConferenceForm.jsx";
+import Ticket from "./components/Ticket/index.jsx";
 // import PaymentPage from './components/PaymentPage'; // You'll need to create this
 // import ConfirmationPage from './components/ConfirmationPage'; // You'll need to create this
 
@@ -16,8 +17,8 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<TicketSelection />} />
-            {/* {/* <Route path="/payment" element={<PaymentPage />} /> */}
-            <Route path="/form" element={<ConferenceForm />} /> 
+            <Route path="/form" element={<ConferenceForm />} />
+            <Route path="/ticket" element={<Ticket />} /> 
           </Routes>
         </Layout>
       </div>
