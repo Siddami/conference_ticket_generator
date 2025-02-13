@@ -1,18 +1,27 @@
+// App.jsx
 import React from "react";
-import  TicketSelection from './components/TicketSelection';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
-// import { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+import TicketSelection from './components/TicketSelection';
+import ConferenceForm from "./components/ConferenceForm.jsx";
+// import PaymentPage from './components/PaymentPage'; // You'll need to create this
+// import ConfirmationPage from './components/ConfirmationPage'; // You'll need to create this
 
 function App() {
-  // const [ticketData, setTicketData] = useState(null);
-
   return (
-    <div className="page-container">
-      {/* <Toaster /> */}
-      <Layout>
-          <TicketSelection />
-      </Layout>
-    </div>
+    <BrowserRouter>
+      <div className="page-container">
+        <Toaster position="top-center" />
+        <Layout>
+          <Routes>
+            <Route path="/" element={<TicketSelection />} />
+            {/* {/* <Route path="/payment" element={<PaymentPage />} /> */}
+            <Route path="/form" element={<ConferenceForm />} /> 
+          </Routes>
+        </Layout>
+      </div>
+    </BrowserRouter>
   );
 }
 
