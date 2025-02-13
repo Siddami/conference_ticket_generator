@@ -42,7 +42,7 @@ const Ticket = ({onCancel, onNext}) => {
             />
 
             <header className="ticket-intro">
-                <h1>Your Ticket is Booked</h1>
+                <h1>Your Ticket is Booked!</h1>
                 <p>You can download or Check your email for a copy</p>
             </header>
             <div className='bg-container'>
