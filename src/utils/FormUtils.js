@@ -1,4 +1,3 @@
-// Cloudinary upload function
 export const uploadToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
@@ -6,22 +5,36 @@ export const uploadToCloudinary = async (file) => {
     formData.append('cloud_name', import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
 
     try {
+        console.log('Starting upload to Cloudinary...');
         const response = await fetch(
-            `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`,
+            `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/auto/upload`,
             {
                 method: 'POST',
                 body: formData,
             }
         );
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Cloudinary Error:', errorData);
+            throw new Error(`Upload failed: ${errorData.error?.message || 'Unknown error'}`);
+        }
+
         const data = await response.json();
-        return data.secure_url;
+        console.log('Upload response:', data);
+
+        if (data.secure_url) {
+            return data.secure_url;
+        } else if (data.url) {
+            return data.url;
+        } else {
+            throw new Error('No URL received from Cloudinary');
+        }
     } catch (error) {
         console.error('Error uploading to Cloudinary:', error);
         throw error;
     }
 };
-
-// Local storage functions
 export const saveFormData = (data) => {
     localStorage.setItem('conferenceFormData', JSON.stringify(data));
 };
