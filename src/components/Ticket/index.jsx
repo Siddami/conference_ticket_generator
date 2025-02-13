@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-const Ticket = () => {
+const Ticket = ({onCancel, onNext}) => {
     const navigate = useNavigate();
     const formData = getFormData();
     const ticketData = getTicketSelection();
@@ -22,7 +22,7 @@ const Ticket = () => {
 
     const handleDownload = () => {
         console.log('Generating ticket...');
-        const ticketElement = document.querySelector('.ticket-container');
+        const ticketElement = document.querySelector('.container');
         if (ticketElement) {
             html2canvas(ticketElement, { scale: 2 }).then((canvas) => {
                 const imgData = canvas.toDataURL('image/png');
