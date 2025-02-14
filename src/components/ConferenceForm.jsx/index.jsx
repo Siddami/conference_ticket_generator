@@ -19,6 +19,10 @@ const ConferenceForm = () => {
         handleNext,
     } = useConferenceForm();
 
+    const triggerFileInput = () => {
+        document.getElementById("fileInput").click();
+    };
+
     return (
         <div className="container">
             <Heading title="Attendee Details" subtitle="Step 2/3" icon="/icons/step2.svg" />
@@ -39,7 +43,7 @@ const ConferenceForm = () => {
                         onKeyDown={(e) => e.key === "Enter" && document.getElementById("fileInput").click()}
                     >
                         {previewUrl ? (
-                            <div className="preview-container">
+                            <div className="preview-container" onClick={triggerFileInput}>
                                 <img 
                                     src={previewUrl} 
                                     alt="Uploaded profile preview" 
@@ -48,7 +52,7 @@ const ConferenceForm = () => {
                                 {isLoading && <div className="loading-overlay" aria-live="polite">Uploading...</div>}
                             </div>
                         ) : (
-                            <div className="draganddrop">
+                            <div className="draganddrop" onClick={triggerFileInput}>
                                 <img src="/icons/upload.svg" alt="" aria-hidden="true" />
                                 <p>Drag & drop or click to upload</p>
                                 {isLoading && <p aria-live="polite">Uploading...</p>}
