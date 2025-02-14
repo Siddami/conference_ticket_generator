@@ -142,7 +142,7 @@
 
 @media (max-width: 900px) {
     .content {
-        margin: clamp(18rem, 8vw, 15rem) auto;
+        margin: clamp(16rem, 8vw, 15rem) auto;
         width: calc(100% - 4rem);
     }
 }
@@ -150,7 +150,7 @@
 
 @media (max-width: 600px) {
     .content {
-        margin-top: 19rem;
+        margin-top: (10rem, 19rem);
         width: calc(100% - 4rem);
         gap: 2rem;
     }
@@ -166,10 +166,10 @@
     }
 }
 
-@media (max-width: 414px){
+@media (max-width: 450px){
     .content {
         margin-top: 22rem;
-        width: calc(100% - 6rem);
+        width: calc(100% - 1rem);
         gap: 2rem;
     }
 
@@ -188,13 +188,18 @@
 
 @media(max-width: 350px){
     .content {
-        margin-top: 22rem;
-        width: calc(100% - 6rem);
+        margin-top: 22.5rem;
+        width: calc(100% - 7rem);
         gap: 2rem;
     }
 
+    .avatar{
+        height: 80px;
+    }
+
     .barcode-container{
-        bottom: 250px;
+        bottom: 240px;
+        text-align: center;
     }
 
     .barcode{
