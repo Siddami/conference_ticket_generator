@@ -5,12 +5,14 @@ import { uploadToCloudinary, saveFormData, getFormData } from "../utils/FormUtil
 
 const useConferenceForm = () => {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
+    const initialFormState = {
         name: '',
         email: '',
         request: '',
         imageUrl: ''
-    });
+    };
+
+    const [formData, setFormData] = useState(initialFormState);
     const [isDragging, setIsDragging] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [previewUrl, setPreviewUrl] = useState('');
@@ -26,6 +28,23 @@ const useConferenceForm = () => {
             }
         }
     }, []);
+
+    const resetForm = useCallback(() => {
+        // Reset all form states to initial values
+        setFormData(initialFormState);
+        setIsDragging(false);
+        setIsLoading(false);
+        setPreviewUrl('');
+        setIsImageUploaded(false);
+        
+        // Clear saved form data
+        saveFormData(null);
+        
+        // Revoke any object URLs to prevent memory leaks
+        if (previewUrl && previewUrl.startsWith('blob:')) {
+            URL.revokeObjectURL(previewUrl);
+        }
+    }, [previewUrl]);
 
     const handleDrag = useCallback((e) => {
         e.preventDefault();
@@ -85,7 +104,10 @@ const useConferenceForm = () => {
         saveFormData(newFormData);
     };
 
-    const handleBack = () => navigate(-1);
+    const handleBack = () => {
+        resetForm();
+        navigate(-1);
+    };
 
     const handleNext = (e) => {
         e.preventDefault();
