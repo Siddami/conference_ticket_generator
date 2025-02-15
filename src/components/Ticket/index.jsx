@@ -19,10 +19,8 @@ const Ticket = ({onCancel, onNext}) => {
         // Clear form data
         saveFormData(null);
         
-        // Clear ticket selection data
         saveTicketSelection(null);
-        
-        // Clear any blob URLs if they exist
+       
         if (formData?.imageUrl?.startsWith('blob:')) {
             URL.revokeObjectURL(formData.imageUrl);
         }
@@ -33,7 +31,7 @@ const Ticket = ({onCancel, onNext}) => {
         clearAllStates();
         
         toast.success('Redirecting to booking page...');
-        navigate('/', { replace: true }); // Using replace to prevent going back to the ticket page
+        navigate('/', { replace: true }); 
     };
 
     const handleDownload = () => {
@@ -44,9 +42,9 @@ const Ticket = ({onCancel, onNext}) => {
         if (ticketElements) {
             const options = {
                 scale: 2,
-                useCORS: true, // Enable cross-origin image loading
-                allowTaint: true, // Allow cross-origin images
-                backgroundColor: '#ffffff', // Set white background
+                useCORS: true, 
+                allowTaint: true, 
+                backgroundColor: '#12464E', 
                 imageTimeout: 0, 
                 onclone: (clonedDoc) => {
                     const clone = clonedDoc.querySelector('.bg-container, .content, .barcode-container');
