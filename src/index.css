@@ -17,7 +17,6 @@ body{
   border-radius: 0px;
   background: radial-gradient(52.52% 32.71% at 50% 97.66%, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%), #02191D;
   min-height: 100vh;
-  width: 100%;
 }
 
 .Layout{
@@ -31,9 +30,8 @@ body{
   flex-direction: column;
   align-items: center;
   gap: 32px;
-  max-width: 800px;
-  width: 90%;
-  min-height: 858px;
+  max-width: 1000px;
+  width: 100%;
   height: auto;
   background: #041E23;
   border: 1px solid #0E464F;
@@ -134,9 +132,8 @@ body{
 
   .heading-text{
     padding-inline: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 80%;
+    align-items: center;
+    justify-content: space-between;
     }
 
     .heading-text h1{
