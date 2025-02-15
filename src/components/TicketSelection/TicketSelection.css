@@ -1,7 +1,6 @@
 /* Container Styles */
 .selection-field {
-    max-width: 604px;
-    width: 90%;
+    width: 60%;
     min-height: 682px;
     display: flex;
     flex-direction: column;
@@ -9,7 +8,7 @@
     background: #08252B;
     border: 1px solid #0E464F;
     border-radius: 32px;
-    padding: clamp(1rem, 4vw, 2rem);
+    padding: clamp(0.5rem, 4vw, 1rem);
 }
 
 /* Event Details Section */
@@ -19,7 +18,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 5px;
+    gap: 2px;
     width: 100%;
     min-height: 200px;
     background: radial-gradient(103.64% 57.39% at 14.02% 32.06%, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%),
@@ -28,7 +27,6 @@
     border-top: none;
     backdrop-filter: blur(7px);
     border-radius: 24px;
-    padding: clamp(1rem, 3vw, 6rem);
     line-height: 1.2;
 }
 
@@ -37,10 +35,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: clamp(0.5rem, 2vw, 16px);
-    gap: clamp(0.5rem, 2vw, 16px);
+    gap: clamp(0.5rem, 2vw, 1rem);
     width: 100%;
-    min-height: fit-content;
     background: #052228;
     border: 1px solid #07373F;
     border-radius: 24px;
@@ -57,10 +53,9 @@ label {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: clamp(8px, 1.5vw, 12px);
-    gap: clamp(8px, 2vw, 16px);
+    padding: clamp(0.5rem, 1.5vw, 0.8rem);
+    gap: clamp(0.5rem, 2vw, 1rem);
     width: 100%;
-    min-height: 125px;
     border: 2px solid #197686;
     border-radius: 12px;
     background-color: transparent;
@@ -144,6 +139,10 @@ label {
 
 /* Media Queries */
 @media (max-width: 770px) {
+    .selection-field{
+        width:90%;
+    }
+
     .progress-icon {
         width: 100%;
         padding: 1rem;
@@ -162,7 +161,6 @@ label {
     }
 
     .ticket-options {
-        flex-direction: column;
         padding: 1rem;
     }
 
@@ -177,13 +175,17 @@ label {
 }
 
 /* Additional Breakpoint for Smaller Screens */
-@media (max-width: 480px) {
+@media (max-width: 550px) {
     .selection-field {
-        padding: 1rem;
+        width: 100%;
         gap: 1.5rem;
     }
 
     .event-details {
         padding: 0.75rem;
+    }
+
+    .ticket-options{
+        flex-direction: column;
     }
 }
