@@ -48,3 +48,7 @@ export const getTicketSelection = () => {
     const data = localStorage.getItem('ticketSelection');
     return data ? JSON.parse(data) : null;
 };
+
+export const saveTicketSelection = (selection) => {
+    localStorage.setItem('ticketSelection', JSON.stringify(selection));
+};
