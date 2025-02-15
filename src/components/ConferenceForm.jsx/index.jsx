@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useConferenceForm from "../../hooks/UseConferenceForm";
 import Heading from "../reuseables/Heading";
 import ButtonGroup from "../reuseables/ButtonGroup";
@@ -18,6 +18,15 @@ const ConferenceForm = () => {
         handleBack,
         handleNext,
     } = useConferenceForm();
+
+    // Cleanup function when component unmounts
+    useEffect(() => {
+        return () => {
+            if (previewUrl && previewUrl.startsWith('blob:')) {
+                URL.revokeObjectURL(previewUrl);
+            }
+        };
+    }, [previewUrl]);
 
     const triggerFileInput = () => {
         document.getElementById("fileInput").click();
@@ -40,7 +49,7 @@ const ConferenceForm = () => {
                         role="button"
                         tabIndex="0"
                         aria-label="Upload a profile picture by dragging or clicking"
-                        onKeyDown={(e) => e.key === "Enter" && document.getElementById("fileInput").click()}
+                        onKeyDown={(e) => e.key === "Enter" && triggerFileInput()}
                     >
                         {previewUrl ? (
                             <div className="preview-container" onClick={triggerFileInput}>
