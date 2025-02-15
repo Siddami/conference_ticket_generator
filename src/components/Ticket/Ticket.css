@@ -1,3 +1,24 @@
+.overallcontainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5rem;
+    padding: 0 1rem;
+}
+
+.ticket-field {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #24A0B5;
+}
+
 .ticket-intro {
     display: flex;
     flex-direction: column;
@@ -9,68 +30,54 @@
     padding: 0 1rem;
 }
 
-.bg-container{
-    position: relative;
-    height: auto;
-    width: 500px;
-    width: min(100%, 500px);
+.bg-container {
+    position: absolute;
     margin: 0 auto;
-}
-
-.relative{
     width: 100%;
+    min-width: 350px;
 }
 
-.barcode-container{
-    position: absolute;
-    bottom: 140px;
-}
-
-.content {
-    z-index: 20;
-    margin: clamp(14.6rem, 8vw, 15rem) auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    max-width: 260px;
+.ticketbg {
     width: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    gap: 1rem;
+    min-width: 60%;
+    height: auto;
+    object-fit: contain;
 }
 
+.barcode-container {
+    position: relative;
+}
 
 .ticket-info {
     border: 1px solid #24A0B5;
     padding: clamp(0.75rem, 2vw, 1rem);
-    width: 100%;
-    border-radius: 14px;
+    border-radius: 1.2rem;
     display: flex;
-    max-height: 600px;
-    height: auto;
+    flex: 1 0 auto;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
     backdrop-filter: blur(10px);
     background: rgba(3, 30, 33, 0.1);
+    width: 90%;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 12rem;
 }
-
 
 .event-detail {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    font-size: 0.625rem;
+    font-size: 0.725rem;
     flex: 0 1 auto;
     padding: 0 clamp(0.5rem, 2vw, 1rem);
     margin-bottom: 1.2rem;
 }
 
-.event-detail h2{
-    font-size: 1.5rem;
+.event-detail h2 {
+    font-size: 2rem;
     font-family: "Road Rage", serif;
     line-height: 0.9;
 }
@@ -79,14 +86,14 @@
     width: 140px;
     height: 140px;
     border: 2px solid rgba(36, 160, 181, 0.5);
-    border-radius: 12px;
+    border-radius: 0.8rem;
     margin: 0 auto;
 }
 
 .avatar img {
     width: 100%;
     height: 100%;
-    border-radius: 8px;
+    border-radius: 0.5rem;
 }
 
 .ticket-details {
@@ -99,7 +106,7 @@
     text-align: left;
     border-radius: 1rem;
     border: 2px solid #12464E;
-    padding: 4px;
+    padding: 2px;
 }
 
 .label {
@@ -110,13 +117,12 @@
     border-right: 2px solid #12464E;
     color: #5A777C;
     padding: 5px;
-
 }
 
 .value {
     font-weight: bold;
     word-break: break-word;
-    color:white;
+    color: white;
 }
 
 .full {
@@ -124,7 +130,7 @@
 }
 
 .ticket-details div {
-    padding: clamp(0.7px, 1vw, 1px) 0;
+    padding: clamp(2px, 1vw, 4px);
     position: relative;
 }
 
@@ -138,72 +144,65 @@
     border-bottom: none;
 }
 
+.wninety {
+    position: relative;
+}
 
-
-@media (max-width: 900px) {
-    .content {
-        margin: clamp(16rem, 8vw, 15rem) auto;
-        width: calc(100% - 4rem);
+@media (max-width:960px) {
+    .ticket-info{
+        margin-bottom: 10rem;
     }
 }
 
-
-@media (max-width: 600px) {
-    .content {
-        margin-top: (10rem, 19rem);
-        width: calc(100% - 4rem);
-        gap: 2rem;
-    }
-
-    .barcode-container{
-        position: absolute;
-        bottom: 210px;
+/* Medium Screens (800px) */
+@media (max-width: 870px) {
+    .overallcontainer{
+        width: 90%;
+        gap: 8rem;
     }
 
     .ticket-info{
-        justify-content: center;
-        height: auto;
-    }
-}
-
-@media (max-width: 450px){
-    .content {
-        margin-top: 22rem;
-        width: calc(100% - 1rem);
+        margin-bottom: 2.5rem;
+        width: 70%;
         gap: 2rem;
     }
 
-    .barcode-container{
-        bottom: 220px;
-    }
-
-    .event-detail h2 {
-        font-size: clamp(1rem, 2vw, 1.2rem);
-    }
-
-    .event-detail p {
-        font-size: clamp(0.5rem, 1.8vw, 0.8rem);
+    .ticket-field,
+    .bg-container,
+    .ticketbg {
+        min-width: 350px;
+        width: 70%;
     }
 }
 
-@media(max-width: 350px){
-    .content {
-        margin-top: 22.5rem;
-        width: calc(100% - 7rem);
-        gap: 2rem;
+/* Small Screens (600px) */
+@media (max-width: 600px) {
+    .ticket-intro{
+        align-items: flex-start;
+        text-align: left;
     }
 
-    .avatar{
-        height: 80px;
-    }
-
-    .barcode-container{
-        bottom: 240px;
-        text-align: center;
-    }
-
-    .barcode{
+    .ticket-info {
         width: 90%;
-        margin: 0 auto;
+    }
+
+    .ticket-field,
+    .bg-container,
+    .ticketbg {
+        min-height: 300px;
+        width: 60%;
+    }
+
+    .event-detail{
+        text-align: left;
     }
 }
+
+/* Extra Small Screens (450px) */
+@media (max-width: 450px) {
+
+    .ticket-details {
+        grid-template-columns: repeat(1, 1fr); /* Single column */
+    }
+}
+
